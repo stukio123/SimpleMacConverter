@@ -1,0 +1,16 @@
+table{
+    width: fit-content;
+}
+
+td{
+    text-align: center;
+    content: inherit;
+}
+
+textarea{
+    width: fit-content;
+    columns: 10;
+    row-gap: 45;
+    resize: vertical;
+    
+}

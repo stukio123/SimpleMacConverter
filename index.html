@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert MAC Address</title>
+    <!-- Import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/index.css" />
+
+    <!-- Import the webpage's javascript file -->
+    
+</head>
+<body>
+    <div>Select your input:</div>
+    <input id="input_file" type="file" onchange="ReadFileInput(this.files[0])"/>
+    <div id="wrapper">
+        <table>
+            <tr>
+                <th>
+                    <div>Input Textarea</div>
+                </th>
+                <th>
+                    <div>Output Textarea</div>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <textarea id="Input_area"></textarea>
+                </td>
+                <td>
+                    <textarea id="Output_area"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var text = ""
+        var arr = []
+        var temp = []
+        async function ReadFileInput(file){
+            text = await file.text()
+            document.getElementById('Input_area').textContent = text
+            arr = text.split("\r\n")
+            arr.map(ele => {
+                ele = ele.toString().match(/.{1,2}/g).join(":")
+                temp.push(ele)
+            })
+            document.getElementById('Output_area').textContent = temp.join("\r\n")
+        }
+    </script>
+</body>
+</html>
